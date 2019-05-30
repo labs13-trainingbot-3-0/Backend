@@ -49,6 +49,8 @@ Valid JWTs are provided by the Auth0 integration with our [React application](ht
 
 ### Resources
 
+Heroku base URL [https://trainingbot-3.herokuapp.com/](https://trainingbot-3.herokuapp.com/)
+
 #### Auth
 
 | route       | methods | description                                              |                                                        Docs                                                         |
