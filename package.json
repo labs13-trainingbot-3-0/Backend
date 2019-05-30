@@ -1,7 +1,7 @@
 {
-	"name": "auth-ii",
-	"version": "1.0.0",
-	"description": "## Topics",
+	"name": "Backend",
+	"version": "3.0.0",
+	"description": "",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -10,14 +10,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Blent1050/auth-ii.git"
+		"url": "https://github.com/labs13-trainingbot-3-0/Backend"
 	},
-	"author": "",
-	"license": "ISC",
+	"author": "Divya Nair, Benjamin Chandler, Thomas Folbrecht, Joe Bugajski",
+	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/Blent1050/auth-ii/issues"
+		"url": "https://github.com/labs13-trainingbot-3-0/Backend/issues"
 	},
-	"homepage": "https://github.com/Blent1050/auth-ii#readme",
+	"homepage": "https://github.com/labs13-trainingbot-3-0/Backend#readme",
 	"dependencies": {
 		"@hapi/joi": "^15.0.1",
 		"@sendgrid/mail": "^6.4.0",
