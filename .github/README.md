@@ -146,9 +146,9 @@ Valid JWTs are provided by the Auth0 integration with our [React application](ht
 
 ## Maintainers
 
-| ![Andrew Brush](https://github.com/ajb85.png) | ![Nick Cannariato](https://github.com/nickcannariato.png) | ![Adam McKenney](https://github.com/DaftBeowulf.png) | ![Gannon Darcy](https://github.com/GannonDetroit.png) | ![Thomas Hessburg](https://github.com/TomHessburg.png) |
-| --------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------ |
-| [@ajb85](https://github.com/ajb85) | [@nickcannariato](https://github.com/nickcannariato) | [@DaftBeowulf](https://github.com/DaftBeowulf) | [@GannonDetroit](https://github.com/GannonDetroit) | [@TomHessburg](https://github.com/TomHessburg)         |
+| ![Divya Nair](https://github.com/dsnair.png) | ![Thomas Folbecht](https://github.com/tfolbrecht.png) | ![Benjamin Chandler](https://github.com/chandlerben.png) | ![Joe Bugajski](https://github.com/JoeBugajski.png)  |
+| --------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------- |
+| [@dsnair](https://github.com/dsnair) | [@tfolbrecht](https://github.com/tfolbrecht) | [@chandlerben](https://github.com/chandlerben) | [@JoeBugajski](https://github.com/JoeBugajski) | 
 
 
 
