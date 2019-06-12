@@ -4,7 +4,8 @@ module.exports = {
   add,
   find,
   update,
-  remove
+  remove,
+  findUserAdmin
 };
 
 function find(filters) {
@@ -52,4 +53,12 @@ function remove(filter) {
   return db("users")
     .where(filter)
     .del();
+}
+
+function findUserAdmin(id) {
+  return db('users')
+    .select('team_members.user_id AS admin_id')
+    .join('team_members', 'users.id', 'team_members.id')
+    .where('team_members.id', id)
+    .first()
 }
