@@ -2,25 +2,18 @@ require("dotenv").config();
 
 module.exports = {
   development: {
-    client: "postgresql",
+    client: 'sqlite3',
     connection: {
-      database: process.env.DB_LOCAL,
-      user: process.env.DB_LOCAL_USER,
-      password: process.env.DB_LOCAL_PASSWORD
+      filename: './models/dev.sqlite3'
     },
-    pool: {
-      min: 2,
-      max: 10
-    },
+    useNullAsDefault: true,
     migrations: {
-      tableName: "knex_migrations",
-      directory: "./models/migrations/"
+      directory: './models/migrations/'
     },
     seeds: {
-      directory: "./models/seeds/"
-    },
-    useNullAsDefault: true
-  },
+      directory: './models/localseeds/'
+    }
+},
   production: {
     client: "postgresql",
     connection: process.env.DATABASE_URL,
