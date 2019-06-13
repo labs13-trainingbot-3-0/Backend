@@ -22,6 +22,8 @@ const messageRouter = require("./controllers/message");
 const stripeRouter = require("./controllers/stripe");
 const slackRouter = require("./controllers/slack");
 const notificationsRouter = require("./controllers/notification");
+const teamMemberNotificationsRouter = require("./controllers/teamMemberNotification");
+
 const responsesRouter = require("./controllers/responses");
 
 //API Endpoints
@@ -33,6 +35,11 @@ server.use("/api/messages", authentication, messageRouter);
 server.use("/api/stripe", authentication, stripeRouter);
 server.use("/api/slack", authentication, slackRouter);
 server.use("/api/notifications", authentication, notificationsRouter);
+server.use(
+  "/api/team-member-notifications/",
+  authentication,
+  teamMemberNotificationsRouter
+);
 server.use("/api/responses", responsesRouter);
 
 //Default Endpoints
