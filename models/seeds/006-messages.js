@@ -11,7 +11,7 @@ exports.seed = async function(knex, Promise) {
       subject: 'Welcome, Training Bot!',
       body: `Hi, I'm your Training Bot! I'll help you onboard.`,
       link: `https://trainingbot3.netlify.com/`,
-      training_series_id: 5,
+      training_series_id: 1,
       days_from_start: 1
     },
     {
