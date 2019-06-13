@@ -6,7 +6,6 @@ exports.up = function(knex, Promise) {
       .inTable("team_members")
       .onDelete("CASCADE")
       .onUpdate("CASCADE")
-      .notNullable();
   });
 };
 
