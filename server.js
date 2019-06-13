@@ -36,7 +36,7 @@ server.use("/api/stripe", authentication, stripeRouter);
 server.use("/api/slack", authentication, slackRouter);
 server.use("/api/notifications", authentication, notificationsRouter);
 server.use(
-  "/api/team-member-notifications/",
+  "/api/team-member-notifications",
   authentication,
   teamMemberNotificationsRouter
 );
