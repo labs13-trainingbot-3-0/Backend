@@ -15,7 +15,6 @@ const validation = require("../middleware/dataValidation");
 router
   .route("/")
   .get(async (req, res) => {
-    console.log("Hello");
     /**
      *Get all Notifications associated with an authenticated user
      *
