@@ -1,18 +1,19 @@
 require("dotenv").config();
 
 module.exports = {
-  sqlite3development: {
-    client: 'sqlite3',
+  development: {
+    client: "sqlite3",
     connection: {
-      filename: './models/dev.sqlite3'
+      filename: "./models/dev.sqlite3"
     },
     migrations: {
-      directory: './models/migrations/'
+      directory: "./models/migrations/"
     },
     seeds: {
-      directory: './models/localseeds/'
+      directory: "./models/liteseeds/"
     },
-},
+    useNullAsDefault: true
+  },
   production: {
     client: "postgresql",
     connection: process.env.DATABASE_URL,
