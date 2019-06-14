@@ -5,8 +5,8 @@ const router = require("express").Router();
 const Users = require("../models/db/users");
 const TrainingSeries = require("../models/db/trainingSeries");
 const TeamMembers = require("../models/db/teamMembers");
-const Notifications = require("../models/db/Notifications");
-const Responses = require("../models/db/Responses");
+const Notifications = require("../models/db/notifications");
+const Responses = require("../models/db/responses");
 
 // Routes
 router.post("/", async (req, res) => {
