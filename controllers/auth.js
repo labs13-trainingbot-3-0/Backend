@@ -5,6 +5,8 @@ const router = require("express").Router();
 const Users = require("../models/db/users");
 const TrainingSeries = require("../models/db/trainingSeries");
 const TeamMembers = require("../models/db/teamMembers");
+const Notifications = require("../models/db/Notifications");
+const Responses = require("../models/db/Responses");
 
 // Routes
 router.post("/", async (req, res) => {
@@ -41,6 +43,10 @@ router.post("/", async (req, res) => {
 
         const adminInfo = await TeamMembers.find({ "tm.id": adminId }).first()
 
+        const notificationsFromAdmin = await Notifications.find({ "n.recipient_id": user.id })
+
+        const responsesToAdmin = await Responses.find({ "tm.id": user.id });
+
         // Login is successful, return the User object, the found Training Series, and a Login Message to the client
         return res.status(200).json({
           message: "Login successful",
@@ -51,7 +57,9 @@ router.post("/", async (req, res) => {
             last_name: adminInfo.last_name,
             email: adminInfo.email
           },
-          trainingSeries
+          trainingSeries,
+          notificationsFromAdmin,
+          responsesToAdmin
         });
       } catch (error) {
         // If no training series were found associated with that user, return
