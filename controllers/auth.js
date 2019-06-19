@@ -75,6 +75,13 @@ router.post("/", async (req, res) => {
       // If user is not found, create a new User
       const newUser = await Users.add(userInfo);
 
+      await TeamMembers.add({
+        first_name: userInfo.name, 
+        last_name: userInfo.name, 
+        email: userInfo.email,
+        user_id: newUser.id
+      });
+
       // Respond to the client with a success message and the newly created User
       return res.status(201).json({
         message: "Account created Successfully",
