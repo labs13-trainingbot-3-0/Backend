@@ -8,6 +8,9 @@ module.exports = {
     env: {
       NODE_ENV: "development"
     },
+    env: {
+      NODE_ENV: "devsqlite"
+    },
     env_production: {
       NODE_ENV: "production"
     }

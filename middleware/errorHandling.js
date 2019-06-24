@@ -15,7 +15,7 @@ module.exports = (err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const env = process.env.NODE_ENV || "development";
   let error;
-  if (env === "development" && statusCode > 499) {
+  if (env === ("development" || "devsqlite") && statusCode > 499) {
     console.error(err);
     error = `Error during ${req.method} at ${req.path}: ${err.message}`;
   }
