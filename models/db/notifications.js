@@ -49,6 +49,7 @@ function find(filters) {
       "m.subject",
       "m.body",
       "m.link",
+      "u.name AS admin_name",
       "u.email AS user",
       "s.name"
     )

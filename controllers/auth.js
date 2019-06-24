@@ -4,6 +4,9 @@ const router = require("express").Router();
 // Models
 const Users = require("../models/db/users");
 const TrainingSeries = require("../models/db/trainingSeries");
+const TeamMembers = require("../models/db/teamMembers");
+const Notifications = require("../models/db/notifications");
+const Responses = require("../models/db/responses");
 
 // Routes
 router.post("/", async (req, res) => {
@@ -35,16 +38,33 @@ router.post("/", async (req, res) => {
         // If a user was found, try to find the Training Series associated with that user
         const trainingSeries = await TrainingSeries.find({ "u.id": user.id });
 
+        const admin = await Users.findUserAdmin(user.id)
+        const adminId = admin.admin_id
+
+        const adminInfo = await TeamMembers.find({ "tm.id": adminId }).first()
+
+        const notificationsFromAdmin = await Notifications.find({ "n.recipient_id": user.id })
+
+        const responsesToAdmin = await Responses.find({ "tm.id": user.id });
+
         // Login is successful, return the User object, the found Training Series, and a Login Message to the client
         return res.status(200).json({
           message: "Login successful",
           user,
-          trainingSeries
+          admin: {
+            user_id: adminInfo.user_id,
+            first_name: adminInfo.first_name,
+            last_name: adminInfo.last_name,
+            email: adminInfo.email
+          },
+          trainingSeries,
+          notificationsFromAdmin,
+          responsesToAdmin
         });
       } catch (error) {
         // If no training series were found associated with that user, return
         // a 404 and a message to the client
-        res.status(404).json({ message: "Training series not found" });
+        res.status(404).json({ message: "User not found" });
       }
     } else if (!user && !name) {
       // If both user and name don't exist, respond to the client with a message
@@ -54,6 +74,13 @@ router.post("/", async (req, res) => {
     } else {
       // If user is not found, create a new User
       const newUser = await Users.add(userInfo);
+
+      await TeamMembers.add({
+        first_name: userInfo.name, 
+        last_name: userInfo.name, 
+        email: userInfo.email,
+        user_id: newUser.id
+      });
 
       // Respond to the client with a success message and the newly created User
       return res.status(201).json({
