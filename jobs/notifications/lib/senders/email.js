@@ -15,15 +15,15 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
  */
 module.exports = n => {
   // Generate a random reply-to email address to track responses
-  const thread = `${uuid()}@mail.trainingbot.app`;
-
+  const thread = `${uuid()}${process.env.SENDGRID_SEND_EMAIL}`;
+  
   // Attempt to send the message via SendGrid, then return an updated 
   // Notification object that inludes the random thread, increments 
   // num_attempts, and changes is_sent to true
   return sgMail.send({
       to: `${n.email}`,
       from: {
-        email: "notifications@trainingbot.app",
+        email: process.env.SENDGRID_SEND_EMAIL,
         name: "Training Bot"
       },
       replyTo: {
@@ -37,7 +37,7 @@ module.exports = n => {
         body: n.body,
         link: n.link
       },
-      templateId: "d-0aad15c066e047aa8eb1ce02e7d17611"
+      templateId: process.env.SENDGRID_TEMPLATE_ID
     })
     .then(_ => ({
       id: n.id,
