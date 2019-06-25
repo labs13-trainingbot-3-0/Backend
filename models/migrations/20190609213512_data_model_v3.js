@@ -90,6 +90,7 @@ exports.up = function(knex, Promise) {
     .createTable('training_series', tbl => {
       tbl.increments().unsigned()
       tbl.text('title').notNullable()
+      tbl.string('image')
       tbl
         .integer('user_id')
         .unsigned()

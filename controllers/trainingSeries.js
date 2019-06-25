@@ -43,10 +43,10 @@ router
      */
 
     //deconstructure the title and user id from the req body.
-    const { title, user_id } = req.body;
+    const { title, user_id, image } = req.body;
 
     //add the new training series to the database
-    const newTrainingSeries = await TrainingSeries.add({ title, user_id });
+    const newTrainingSeries = await TrainingSeries.add({ title, user_id, image });
 
     //return the newly created training series to the client.
     return res.status(201).json({ newTrainingSeries });

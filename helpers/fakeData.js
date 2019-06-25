@@ -32,6 +32,7 @@ function createFakeTrainingSeries() {
   const newSeries = [];
   const fakeSeries = () => ({
     title: faker.company.catchPhrase(),
+    image: faker.image.business(),
     user_id: faker.random.number({
       min: 1,
       max: userSeeds

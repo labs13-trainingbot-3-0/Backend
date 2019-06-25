@@ -49,7 +49,8 @@ const trainingSeriesSchema = {
   user_id: Joi.number()
     .integer()
     .min(1)
-    .required()
+    .required(),
+  image: Joi.string()
 };
 
 const messageSchema = {
