@@ -4,7 +4,8 @@ module.exports = {
   add,
   find,
   update,
-  remove
+  remove,
+  responsesByNotifications
 };
 
 /**
@@ -89,4 +90,10 @@ function remove(filters) {
     .leftJoin("users AS u", { "u.id": "tm.user_id" })
     .where(filters)
     .del();
+}
+
+function responsesByNotifications(id) {
+  return db('notifications As n')
+    .join('responses AS r', 'n.id', 'r.notification_id')
+    .where('n.id', id)
 }
