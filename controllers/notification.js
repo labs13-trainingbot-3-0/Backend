@@ -129,24 +129,15 @@ router.route("/:id/responses").get(async (req, res) => {
   // Destructure the Notification ID from the request parameters
   const { id } = req.params;
 
-  // Destructure the authenticated User email off of res.locals
-  const { email } = res.locals.user;
-
-  // Attempt to find the Notification in the database that relates to the authenticated user
-  const notification = await Notifications.find({
-    "n.id": id,
-    "u.email": email
-  }).first();
-
-  if (notification) {
-    // If notification exists, find all Responses with the specified Notification ID
-    const responses = await Responses.find({ "r.notification_id": id });
-
-    // Return the found Responses to the client
-    res.status(200).json({ responses });
-  } else {
-    // If notification is falsey, we can assume either the Notification doesn't exist in the database or the user doesn't have access
-    res.status(404).json({ message: "That notification does not exist." });
+  try {
+    const responses = await Notifications.responsesByNotifications(id)
+    if(!responses.length) {
+      return res.status(200).json({responses, message: "This notification has no responses."})
+    } else {
+      res.status(200).json({ responses });
+    }
+  } catch(error) {
+    res.status(500).json({ error })
   }
 });
 
