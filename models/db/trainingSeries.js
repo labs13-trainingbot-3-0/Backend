@@ -19,7 +19,7 @@ module.exports = {
  */
 function find(filters) {
   return db("training_series AS ts")
-    .select("ts.id", "ts.title", "u.email AS user")
+    .select( "ts.id", "ts.title", "ts.image", "u.email AS user" )
     .join("users AS u", { "ts.user_id": "u.id" })
     .where(filters);
 }
